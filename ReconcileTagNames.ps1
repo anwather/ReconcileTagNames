@@ -4,8 +4,7 @@ Param (
     [string]$SubscriptionId,
     [Parameter(ParameterSetName = "ManagementGroup")]
     [string]$ManagementGroupId,
-    [hashtable]$TagFixes,
-    [string[]]$TagCorrections
+    [hashtable]$TagFixes
 )
 
 function ConvertPSObjectToHashtable {
@@ -39,6 +38,7 @@ function ConvertPSObjectToHashtable {
     }
 }
 
+$tagCorrections = $TagFixes.Values | Select-Object -Unique
 
 $query = @"
 resources
