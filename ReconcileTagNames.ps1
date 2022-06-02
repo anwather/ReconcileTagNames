@@ -92,6 +92,11 @@ resources
 | where not(isnull(tags))
 | where tags != '{}'
 | project id,tags
+| union 
+resourcecontainers
+| where not(isnull(tags))
+| where tags != '{}'
+| project id,tags
 "@
 
 $objects = @()
